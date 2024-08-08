@@ -3,7 +3,7 @@ import Film
 import Planets
 from Film import Film
 from Species import Species
-from Starships import Starships
+from starships import Starships
 
 
 def cargar_SWAPIs(link):
@@ -58,17 +58,17 @@ def cargar_info():
         dbplanets.append(planets)
         print(title)
 
-       
-    for general_species in species_API['results']:
-        url = general_species["url"]
-        info_species = rq.get(url).json()
-        name = info_species['result']['properties']["name"]
-        average_height = info_species['result']['properties']['average_height']
-        classification = info_species['result']['properties']['classification']
-        language = info_species['result']['properties']['language']
-        people = info_species['result']['properties']['people']
-       
-        species = Species(name, average_height, classification, language, people
-        dbspecies.append(species)
 
-    
+        for general_species in species_API['results']:
+            url = general_species["url"]
+            info_species = rq.get(url).json()
+            name = info_species['result']['properties']["name"]
+            average_height = info_species['result']['properties']['average_height']
+            classification = info_species['result']['properties']['classification']
+            language = info_species['result']['properties']['language']
+            people = info_species['result']['properties']['people']
+        
+            species = Species(name, average_height, classification, language, people)
+            dbspecies.append(species)
+
+cargar_info()
