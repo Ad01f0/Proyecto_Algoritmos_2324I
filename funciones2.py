@@ -1,5 +1,6 @@
 import requests as rq
 import Film
+import Planets
 
 
 def cargar_SWAPIs(link):
@@ -18,7 +19,7 @@ def cargar_info():
     dbspecies=[]
 
     films_API=cargar_SWAPIs("https://www.swapi.tech/api/films")
-    planets_API=cargar_SWAPIs("https://www.swapi.tech/api/planets")
+    planets_API=cargar_SWAPIs("https://www.swapi.tech/api/planets?page=1&limit=2000")
     characters_API=cargar_SWAPIs("https://www.swapi.tech/api/people")
     starships_API=cargar_SWAPIs("https://www.swapi.tech/api/starships")
     vehicles_API=cargar_SWAPIs("https://www.swapi.tech/api/vehicles")
@@ -38,5 +39,20 @@ def cargar_info():
         film = Film(title, )
         dbfilms.append(film)
         print(title)
-    
+
+    for general_planets in planets_API['result']:
+        url = general_planets["url"]
+        info_planets = rq.get(url).json()
+        planets = info_planets["result"]["propierties"]["planets"]
+        name = general_planets['properties']['name']
+        orbital_period = general_planets['properties']['orbital_period']
+        rotation_period = general_planets['properties']['rotation_period']
+        population = general_planets['properties']['population']
+        climate = general_planets['properties']['climate']
+        
+
+        planets = Planets( name,  orbital_period,rotation_period, population, climate) 
+        dbplanets.append(planets)
+        print(title)
+
 cargar_info()
