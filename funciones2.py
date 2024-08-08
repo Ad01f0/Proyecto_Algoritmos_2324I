@@ -1,6 +1,9 @@
 import requests as rq
 import Film
 import Planets
+from Film import Film
+from Species import Species
+from Starships import Starships
 
 
 def cargar_SWAPIs(link):
@@ -20,10 +23,10 @@ def cargar_info():
 
     films_API=cargar_SWAPIs("https://www.swapi.tech/api/films")
     planets_API=cargar_SWAPIs("https://www.swapi.tech/api/planets?page=1&limit=2000")
-    characters_API=cargar_SWAPIs("https://www.swapi.tech/api/people")
-    starships_API=cargar_SWAPIs("https://www.swapi.tech/api/starships")
-    vehicles_API=cargar_SWAPIs("https://www.swapi.tech/api/vehicles")
-    species_API=cargar_SWAPIs("https://www.swapi.tech/api/species")
+    characters_API=cargar_SWAPIs("https://www.swapi.tech/api/people?page=0&limit=2000%22")
+    starships_API=cargar_SWAPIs("https://www.swapi.tech/api/starships?page=1&limit=1000")
+    vehicles_API=cargar_SWAPIs("https://www.swapi.tech/api/vehicles?page=1&limit=1000")
+    species_API=cargar_SWAPIs("https://www.swapi.tech/api/species?page=1&limit=2000")
 
     for general_films in films_API['result']:
         title=general_films['properties']['title']
@@ -36,7 +39,7 @@ def cargar_info():
         starships=general_films['properties']['starships']
         vehicles=general_films['properties']['vehicles']
 
-        film = Film(title, )
+        film = Film(title, episode_id, release_date, opening_crawl, director, species,characters,starships,vehicles)
         dbfilms.append(film)
         print(title)
 
@@ -55,4 +58,17 @@ def cargar_info():
         dbplanets.append(planets)
         print(title)
 
-cargar_info()
+       
+    for general_species in species_API['results']:
+        url = general_species["url"]
+        info_species = rq.get(url).json()
+        name = info_species['result']['properties']["name"]
+        average_height = info_species['result']['properties']['average_height']
+        classification = info_species['result']['properties']['classification']
+        language = info_species['result']['properties']['language']
+        people = info_species['result']['properties']['people']
+       
+        species = Species(name, average_height, classification, language, people
+        dbspecies.append(species)
+
+    
