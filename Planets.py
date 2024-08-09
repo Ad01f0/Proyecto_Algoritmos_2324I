@@ -1,5 +1,5 @@
 #Clase de los planetas 
-class Planeta:
+class Planet:
    def __init__(self, name, orbital_period,rotation_period, population, climate, url): 
     self.name= name
     self.orbital_period= orbital_period
