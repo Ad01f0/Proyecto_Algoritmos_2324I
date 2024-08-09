@@ -54,7 +54,7 @@ def cargar_info():
         population = general_planets['properties']['population']
         climate = general_planets['properties']['climate']
         
-        planets = Planet( name,  orbital_period,rotation_period, population, climate) 
+        planets = Planet( name,  orbital_period,rotation_period, population, climate,url) 
         dbplanets.append(planets)
         print(title)
 
@@ -68,7 +68,7 @@ def cargar_info():
         language = info_species['result']['properties']['language']
         people = info_species['result']['properties']['people']
        
-        species = Species(name, average_height, classification, language, people)
+        species = Species(name, average_height, classification, language, people,url)
         dbspecies.append(species)
 
     for general_characters in characters_API['results']:
@@ -78,7 +78,7 @@ def cargar_info():
         homeworld = info_characters['result']['homeworld']
         gender = info_characters['result']['properties']['gender']
 
-        characters = Character(name, homeworld, gender)
+        characters = Character(name, homeworld, gender,url)
         dbcharacters.append(characters)
 
     for general_vehicles in vehicles_API['results']:
