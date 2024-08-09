@@ -1,9 +1,10 @@
 import requests as rq
-import Film
-import Planets
+from Planet import Planet
 from Film import Film
 from Species import Species
-from starships import Starships
+from Starship import Starship
+from Character import Character
+from Vehicle import Vehicle
 
 
 def cargar_SWAPIs(link):
@@ -53,22 +54,45 @@ def cargar_info():
         population = general_planets['properties']['population']
         climate = general_planets['properties']['climate']
         
-
-        planets = Planets( name,  orbital_period,rotation_period, population, climate) 
+        planets = Planet( name,  orbital_period,rotation_period, population, climate) 
         dbplanets.append(planets)
         print(title)
 
+       
+    for general_species in species_API['results']:
+        url = general_species["url"]
+        info_species = rq.get(url).json()
+        name = info_species['result']['properties']["name"]
+        average_height = info_species['result']['properties']['average_height']
+        classification = info_species['result']['properties']['classification']
+        language = info_species['result']['properties']['language']
+        people = info_species['result']['properties']['people']
+       
+        species = Species(name, average_height, classification, language, people)
+        dbspecies.append(species)
 
-        for general_species in species_API['results']:
-            url = general_species["url"]
-            info_species = rq.get(url).json()
-            name = info_species['result']['properties']["name"]
-            average_height = info_species['result']['properties']['average_height']
-            classification = info_species['result']['properties']['classification']
-            language = info_species['result']['properties']['language']
-            people = info_species['result']['properties']['people']
+    for general_characters in characters_API['results']:
+        url = general_characters["url"]
+        info_characters = rq.get(url).json()
+        name = info_characters['result']["name"]
+        homeworld = info_characters['result']['homeworld']
+        gender = info_characters['result']['properties']['gender']
+
+        characters = Character(name, homeworld, gender)
+        dbcharacters.append(characters)
+
+    for general_vehicles in vehicles_API['results']:
+        url = general_vehicles["url"]
+        info_vehicles = rq.get(url).json()
+        pilots = info_vehicles['result']['properties']['pilots']
         
-            species = Species(name, average_height, classification, language, people)
-            dbspecies.append(species)
+        vehicles = Vehicle(pilots, url)
+        dbvehicles.append(vehicles)
 
-cargar_info()
+    for general_starship in starships_API['results']:
+        url = general_starship["url"]
+        info_starships= rq.get(url).json()
+        pilots = info_vehicles['result']['properties']['pilots']
+        
+        starships = Starship(pilots, url)
+        dbstarships.append(starships)
