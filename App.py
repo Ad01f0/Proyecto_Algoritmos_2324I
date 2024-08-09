@@ -2,6 +2,7 @@ from Usuario import Usuario
 from funciones2 import cargar_SWAPIs
 from funciones2 import cargar_info
 from movies_list_module import show_movie_list
+from planets_list_module import show_planets_list
 
 class App:
         dbfilms, dbplanets, dbcharacters, dbstarships, dbvehicles, dbspecies = cargar_info()
@@ -24,3 +25,5 @@ class App:
         if menu == '1':
                 show_movie_list(dbfilms)
 
+        elif menu == '2':
+                show_planets_list(dbplanets)
