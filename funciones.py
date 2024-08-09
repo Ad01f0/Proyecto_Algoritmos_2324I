@@ -22,12 +22,12 @@ def cargar_info():
     dbvehicles=[]
     dbspecies=[]
 
-    films_API=cargar_SWAPIs("https://www.swapi.tech/api/films")
-    planets_API=cargar_SWAPIs("https://www.swapi.tech/api/planets")
-    characters_API=cargar_SWAPIs("https://www.swapi.tech/api/people")
-    starships_API=cargar_SWAPIs("https://www.swapi.tech/api/starships")
-    vehicles_API=cargar_SWAPIs("https://www.swapi.tech/api/vehicles")
-    species_API=cargar_SWAPIs("https://www.swapi.tech/api/species")
+    films_API=cargar_SWAPIs("https://www.swapi.tech/api/films?page=1&limit=100")
+    planets_API=cargar_SWAPIs("https://www.swapi.tech/api/planets?page=1&limit=100")
+    characters_API=cargar_SWAPIs("https://www.swapi.tech/api/people?page=1&limit=100")
+    starships_API=cargar_SWAPIs("https://www.swapi.tech/api/starships?page=1&limit=100")
+    vehicles_API=cargar_SWAPIs("https://www.swapi.tech/api/vehicles?page=1&limit=100")
+    species_API=cargar_SWAPIs("https://www.swapi.tech/api/species?page=1&limit=100")
 
     for general_films in films_API['result']:
         title=general_films['properties']['title']
@@ -39,8 +39,9 @@ def cargar_info():
         characters=general_films['properties']['characters']
         starships=general_films['properties']['starships']
         vehicles=general_films['properties']['vehicles']
+        planets=general_films['properties']['planets']
 
-        film = Film(title, episode_id, release_date, opening_crawl, director, species,characters,starships,vehicles)
+        film = Film(title, episode_id, release_date, opening_crawl, director, species,characters,starships,vehicles, planets)
         dbfilms.append(film)
 
     for general_planets in planets_API['results']:
@@ -59,17 +60,18 @@ def cargar_info():
             print("Error al cargar la data")
        
     for general_species in species_API['results']:
+        url = general_species["url"]
         try:
-            url = general_species["url"]
             info_species = rq.get(url).json()
             name = info_species['result']["properties"]["name"]
+            homeworld = info_species['result']["properties"]["homeworld"]
             average_height = info_species['result']['properties']['average_height']
             classification = info_species['result']['properties']['classification']
             language = info_species['result']['properties']['language']
             people = info_species['result']['properties']['people']
-        
-            species = Species(name, average_height, classification, language, people,url)
-            dbspecies.append(species)
+            
+            specie = Species(name, average_height, homeworld, classification, language, people, url)
+            dbspecies.append(specie)
         except:
             print("Error al cargar la data")
 
@@ -115,5 +117,5 @@ def cargar_info():
         except:
             print("Error al cargar la data")
     
-    return dbfilms, dbplanets, dbcharacters, dbstarships, dbvehicles, dbspecies    
+    return dbfilms, dbplanets, dbcharacters, dbstarships, dbvehicles, dbspecies
     

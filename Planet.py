@@ -8,5 +8,10 @@ class Planet:
     self.climate = climate
     self.url = url 
     
-   def show(self):
-     print(f"Nombre: {self.name}\n Período de órbita.: {self.orbital_period}\nCantidad de habitantes: {self.population}\nTipo de clima:{self.climate}")
+   def show(self, filmName, homeworldCharacters ):
+      print(f"Nombre del planeta: {self.name}\nPeríodo de órbita: {self.orbital_period}\nPeríodo de rotación: {self.rotation_period}\nCantidad de habitantes: {self.population}\nTipo de clima:{self.climate}\nEpisodios en los que aparece el planeta: ")
+      for name in filmName:
+        print(name)
+      print("Peronajes originarios del planeta: ")
+      for name in homeworldCharacters:
+        print(name)

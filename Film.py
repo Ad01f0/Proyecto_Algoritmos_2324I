@@ -1,7 +1,7 @@
 # Clase de las peliculas
 
 class Film:
-  def __init__(self, title, episode_id, release_date, opening_crawl, director,species,characters,starships,vehicles):
+  def __init__(self, title, episode_id, release_date, opening_crawl, director,species,characters,starships,vehicles,planet):
     self.title = title
     self.episode_id = episode_id
     self.release_date = release_date
@@ -11,6 +11,7 @@ class Film:
     self.characters = characters
     self.starships = starships
     self.vehicles = vehicles
+    self.planet = planet
 
 
   def show(self):
