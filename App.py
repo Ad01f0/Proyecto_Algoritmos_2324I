@@ -36,6 +36,7 @@ class App:
                         
                         show_planets_list(dbplanets, dbfilms, dbcharacters)
                 elif menu == '4':
+
                         buscar_personaje(dbcharacters)
                 elif menu == '5':
                         
