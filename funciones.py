@@ -7,6 +7,7 @@ from Character import Character
 from Vehicle import Vehicle
 
 
+
 def cargar_SWAPIs(link):
     try: 
         informacion = rq.get(link).json()
@@ -21,6 +22,7 @@ def cargar_info():
     dbstarships=[]
     dbvehicles=[]
     dbspecies=[]
+   
 
     films_API=cargar_SWAPIs("https://www.swapi.tech/api/films?page=1&limit=100")
     planets_API=cargar_SWAPIs("https://www.swapi.tech/api/planets?page=1&limit=100")
@@ -83,7 +85,7 @@ def cargar_info():
             homeworld = info_characters['result']["properties"]['homeworld']
             gender = info_characters['result']['properties']['gender']
 
-            characters = Character(name, homeworld, gender,url)
+            characters = Character(name, homeworld, gender, url)
             dbcharacters.append(characters)
         except:
             print("Error al cargar la data")
@@ -118,4 +120,7 @@ def cargar_info():
             print("Error al cargar la data")
     
     return dbfilms, dbplanets, dbcharacters, dbstarships, dbvehicles, dbspecies
+
+
+    
     

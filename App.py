@@ -2,10 +2,11 @@ from funciones import cargar_info
 from movies_list_module import show_movie_list
 from planets_list_module import show_planets_list
 from species_list_module import show_species_list
+from characters_list_module import buscar_personaje
 
 class App:
 
-        dbfilms, dbplanets, dbcharacters, dbstarships, dbvehicles, dbspecies= cargar_info()
+        dbfilms, dbplanets, dbcharacters, dbstarships, dbvehicles, dbspecies = cargar_info()
         
         while(True):
                 menu = input('''
@@ -35,8 +36,7 @@ class App:
                         
                         show_planets_list(dbplanets, dbfilms, dbcharacters)
                 elif menu == '4':
-                        
-                        None
+                        buscar_personaje(dbcharacters)
                 elif menu == '5':
                         
                         None
