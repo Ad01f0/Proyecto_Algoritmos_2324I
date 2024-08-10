@@ -5,6 +5,8 @@ from Species import Species
 from Starship import Starship
 from Character import Character
 from Vehicle import Vehicle
+from Asignar_species import asignar_species
+from Asignar_starships import asignar_starships
 
 
 
@@ -60,6 +62,7 @@ def cargar_info():
             dbplanets.append(planets)
         except:
             print("Error al cargar la data")
+            print("MORILLO")
        
     for general_species in species_API['results']:
         url = general_species["url"]
@@ -77,6 +80,25 @@ def cargar_info():
         except:
             print("Error al cargar la data")
 
+    for general_starship in starships_API['results']:
+        try:
+            url = general_starship["url"]
+            info_starships= rq.get(url).json()
+            name = info_starships['result']['properties']['name']
+            model = info_starships['result']['properties']['model']
+            length = info_starships['result']['properties']['length']
+            pilots = info_starships['result']['properties']['pilots']
+            cargo_capacity = info_starships['result']['properties']['cargo_capacity']
+            hyperdrive_rating = info_starships['result']['properties']['hyperdrive_rating']
+            max_speed = info_starships['result']['properties']['max_atmosphering_speed']
+            mglt = info_starships['result']['properties']['MGLT']
+            cost = info_starships['result']['properties']['cost_in_credits']
+            
+            starships = Starship(model, pilots, name, length, cargo_capacity, hyperdrive_rating, cost, max_speed, mglt, url)
+            dbstarships.append(starships)
+        except:
+            print("Error al cargar la data")
+
     for general_characters in characters_API['results']:
         try:
             url = general_characters["url"]
@@ -84,11 +106,14 @@ def cargar_info():
             name = info_characters['result']["properties"]["name"]
             homeworld = info_characters['result']["properties"]['homeworld']
             gender = info_characters['result']['properties']['gender']
+            species = asignar_species(dbspecies, url)
+            starships = asignar_starships(dbstarships, url)
 
-            characters = Character(name, homeworld, gender, url)
+            characters = Character(name, homeworld, gender, species, starships, url)
             dbcharacters.append(characters)
         except:
             print("Error al cargar la data")
+            print("EMILIO")
 
     for general_vehicles in vehicles_API['results']:
         try:
@@ -101,24 +126,6 @@ def cargar_info():
         except:
             print("Error al cargar la data")
         
-    for general_starship in starships_API['results']:
-        try:
-            url = general_starship["url"]
-            info_starships= rq.get(url).json()
-            model = info_starships['result']['properties']['model']
-            length = info_starships['result']['properties']['length']
-            pilots = info_starships['result']['properties']['pilots']
-            cargo_capacity = info_starships['result']['properties']['cargo_capacity']
-            hyperdrive_rating = info_starships['result']['properties']['hyperdrive_rating']
-            max_speed = info_starships['result']['properties']['max_atmosphering_speed']
-            mglt = info_starships['result']['properties']['MGLT']
-            cost = info_starships['result']['properties']['cost_in_credits']
-            
-            starships = Starship(model, pilots, length, cargo_capacity, hyperdrive_rating, cost, max_speed, mglt, url)
-            dbstarships.append(starships)
-        except:
-            print("Error al cargar la data")
-    
     return dbfilms, dbplanets, dbcharacters, dbstarships, dbvehicles, dbspecies
 
 
