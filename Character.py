@@ -1,9 +1,11 @@
 #Clase de los personajes 
 class Character:
-   def __init__(self, name, homeworld, gender, url): 
+   def __init__(self, name, homeworld, gender, specie, starship, url): 
     self.name= name
     self.homeworld= homeworld
     self.gender = gender
+    self.specie = specie
+    self.starship = starship
     self.url = url
     
 
@@ -12,7 +14,7 @@ class Character:
            planeta de origen: {self.homeworld}
            episodios en los que interviene:
            genero: {self.gender}
-           especie:
-           naves que utiliza:
+           especie: {self.specie}
+           naves que utiliza: {self.starship}
            vehiculos que utiliza:
             ''')
