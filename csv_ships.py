@@ -26,10 +26,14 @@ def starships_from_csv():
         starship = Starships(
                 row['id'],
                 row['name'],
-                row['length'],  
+                row['cost_in_credits'],
+                row['length'], 
+                row['max_atmosphering_speed'], 
                 row['cargo_capacity'],
                 row['hyperdrive_rating'],
-                row['MGLT'])
+                row['MGLT'],
+                row['starship_class'])
+    
     starships.append(starship)
 starships_from_csv()
 
