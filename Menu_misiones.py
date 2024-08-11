@@ -1,3 +1,5 @@
+from Mision import crear_misiones
+
 class menu_misiones:
 
     while(True):
@@ -11,7 +13,7 @@ class menu_misiones:
                         6._ Salir                             
                         --> ''')
         if menu== '1':
-            None
+            crear_misiones()
         if menu== '2':
             None
         if menu== '3':
