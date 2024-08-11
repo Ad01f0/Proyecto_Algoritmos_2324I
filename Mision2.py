@@ -160,21 +160,20 @@ def main():
         print("2. Modificar misión")
         print("3. Visualizar misión")
         print("4. Guardar misiones")
-        print("5. Cargar misiones")
-        print("6. Salir")
+        print("5. Salir")
         opcion = input("Seleccione una opción: ")
 
         if opcion == '1':
+            misiones = cargar_misiones()
             misiones.extend(crear_misiones())
         elif opcion == '2':
             modificar_mision(misiones)
         elif opcion == '3':
+            misiones = cargar_misiones()
             visualizar_mision(misiones)
         elif opcion == '4':
             guardar_misiones(misiones)
         elif opcion == '5':
-            misiones = cargar_misiones()
-        elif opcion == '6':
             print("Saliendo del sistema.")
             break
         else:
