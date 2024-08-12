@@ -7,15 +7,16 @@ from Character import Character
 from Vehicle import Vehicle
 from Asignar_species import asignar_species
 from Asignar_starships import asignar_starships
-
-
+from Asignar_vehiculos import asignar_vehiculos
+from Asignar_films import asignar_films
+from Asingar_planeta import asignar_planeta
 
 def cargar_SWAPIs(link):
     try: 
         informacion = rq.get(link).json()
         return informacion
     except: 
-        print("Error al cargar la data")
+        print("Error al cargar la data para SWAPIs")
 
 def cargar_info():
     dbfilms=[]
@@ -58,11 +59,10 @@ def cargar_info():
             population = info_planets['result']['properties']['population']
             climate = info_planets['result']['properties']['climate']
             
-            planets = Planet( name,  orbital_period,rotation_period, population, climate,url) 
+            planets = Planet(name,  orbital_period,rotation_period, population, climate,url) 
             dbplanets.append(planets)
         except:
-            print("Error al cargar la data")
-            print("MORILLO")
+            print("Error al cargar la data para planets")
        
     for general_species in species_API['results']:
         url = general_species["url"]
@@ -78,7 +78,8 @@ def cargar_info():
             specie = Species(name, average_height, homeworld, classification, language, people, url)
             dbspecies.append(specie)
         except:
-            print("Error al cargar la data")
+            print("Error al cargar la data para species")
+           
 
     for general_starship in starships_API['results']:
         try:
@@ -97,35 +98,41 @@ def cargar_info():
             starships = Starship(model, pilots, name, length, cargo_capacity, hyperdrive_rating, cost, max_speed, mglt, url)
             dbstarships.append(starships)
         except:
-            print("Error al cargar la data")
+            print("Error al cargar la data para starships")
+           
+
+    for general_vehicles in vehicles_API['results']:
+        try:
+            url = general_vehicles["url"]
+            info_vehicles = rq.get(url).json()
+            name = info_vehicles['result']['properties']['name']
+            pilots = info_vehicles['result']['properties']['pilots']
+            
+            vehicles = Vehicle(name, pilots, url)
+            dbvehicles.append(vehicles)
+        except:
+            print("Error al cargar la data para vehicles")
+            
 
     for general_characters in characters_API['results']:
         try:
             url = general_characters["url"]
             info_characters = rq.get(url).json()
             name = info_characters['result']["properties"]["name"]
-            homeworld = info_characters['result']["properties"]['homeworld']
             gender = info_characters['result']['properties']['gender']
+            homeworld = asignar_planeta(dbplanets, info_characters['result']["properties"]['homeworld'])
             species = asignar_species(dbspecies, url)
             starships = asignar_starships(dbstarships, url)
+            vehicles = asignar_vehiculos(dbvehicles, url)
+            films = asignar_films(dbfilms, url)
 
-            characters = Character(name, homeworld, gender, species, starships, url)
+            characters = Character(name, homeworld, gender, species, starships, vehicles, films, url)
             dbcharacters.append(characters)
         except:
-            print("Error al cargar la data")
-            print("EMILIO")
-
-    for general_vehicles in vehicles_API['results']:
-        try:
-            url = general_vehicles["url"]
-            info_vehicles = rq.get(url).json()
-            pilots_vehicles = info_vehicles['result']['properties']['pilots']
+            print("Error al cargar la data para characters")
             
-            vehicles = Vehicle(pilots_vehicles, url)
-            dbvehicles.append(vehicles)
-        except:
-            print("Error al cargar la data")
-        
+
+
     return dbfilms, dbplanets, dbcharacters, dbstarships, dbvehicles, dbspecies
 
 

@@ -1,0 +1,6 @@
+Nombre de la misión: PATRIA
+Planeta destino: VENEZUELA
+Nave: POLITIC
+Armas: POPULISMO
+Integrantes: CHAVEZ
+
