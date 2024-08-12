@@ -1,6 +1,6 @@
 
 #Clase de los personajes 
-class Character:
+class Character: #Clase que almacena informacion sobre personaje
    def __init__(self, name, homeworld, gender, specie, starship, vehicle, films, url): 
     self.name= name
     self.homeworld= homeworld
@@ -12,7 +12,7 @@ class Character:
     self.url = url
     
 
-   def show(self):
+   def show(self): #Muestra los detalles del personaje
      print(f'''
            ------------------------------------------
            nombre del personaje: {self.name}

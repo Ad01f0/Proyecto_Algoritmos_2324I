@@ -12,3 +12,5 @@ def show_planets_list(dbplanets, dbfilms, dbcharacters):
                 homeworldCharacters.append(character.name)
         planet.show(filmNames, homeworldCharacters)
         print('-----------------')
+#Muestra una lista de planetas, las películas en las que aparecen y los personajes originarios de cada planeta.
+

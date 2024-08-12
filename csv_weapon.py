@@ -1,36 +1,50 @@
-import csv 
+import pandas as pd
+
+def getRowsFromCsv(file_path):   #Carga información del CSV de armas
+    df = pd.read_csv(file_path)
+    return df.iterrows()
 
 class Weapon:
-   def __init__(self, id, name): 
-    self.id = id
-    self.name = name
+    def __init__(self, id, name, model,	manufacturer, cost_in_credits,	length,	type,	description,	films): 
+        self.id = id
+        self.name = name
+        self.model = model
+        self.manufacturer= manufacturer
+        self.cost_in_credits = cost_in_credits
+        self.length= length
+        self.type = type
+        self.description = description
+        self.films= films
 
-   ruta = "C:\\Users\\gabyp\\Documents\\proyecto_algoritmos\\starwars\\weapons.csv"
+    def show(self):
+        return (f'Nombre: {self.name}\n'
+                f'Modelo: {self.model}\n'
+                f'Manofacturador: {self.manufacturer}\n'
+                f'Costo en creditos: {self.cost_in_credits}\n'
+                f'Longitud: {self.length}\n'
+                f'Tipo: {self.type}\n'
+                f'Descripcion: {self.description}\n'
+                f'Peliculas donde aparece: {self.films}\n')
 
-   def weapons_from_csv(ruta_archivo):
-      weapons = []
-      with open(ruta_archivo, mode='r', encoding='utf-8') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            weapon = Weapon(
+def weapons_from_csv():    #Almacena la información del CSV de arma
+    path_weapons= 'CSV/weapons.csv'
+    rows = getRowsFromCsv(path_weapons)
+    
+    weapons = []
+    for _ , row in rows:
+        weapon = Weapon(
                 row['id'],
                 row['name'],
-            )
-            weapons.append(weapon)
-            return weapons
-   
-   def select_weapon(weapons):
-    try:
-        opcion = int(input("Seleccione un arma: "))
-        eleccion_arma = weapons[opcion - 1]
-        print(f'Has seleccionado el arma {eleccion_arma.name}.')
-        return eleccion_arma
-    except:
-        print("Carácter inválido. Inténtalo nuevamente.")
-        
-        def show_weapons(weapons):
-          print("Lista de armas:")
-        for i, weapon in enumerate(weapons, 1):
-          print(f'{i}. {weapon.name}')
+                row['model'],
+                row['manufacturer'],
+                row['cost_in_credits'],
+                row['length'],
+                row['type'],
+                row['description'],
+                row['films']
+                )
+        weapons.append(weapon)
+    return weapons
+weapons = weapons_from_csv()
 
  

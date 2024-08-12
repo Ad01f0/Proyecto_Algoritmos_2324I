@@ -1,4 +1,4 @@
-def asignar_vehiculos(dbvehicles, urlCharacter):
+def asignar_vehiculos(dbvehicles, urlCharacter): #Recorre una lista de vehículos y verifica si el personaje maneja de alguno de ellos.
     vehicles = []
     for vehicle in dbvehicles:
         listPilots = vehicle.pilots

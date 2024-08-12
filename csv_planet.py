@@ -1,41 +1,28 @@
-import csv 
+import pandas as pd
+
+def getRowsFromCsv(file_path):  #Carga información del CSV de planeta
+    df = pd.read_csv(file_path)
+    return df.iterrows()
 class Planet:
-   def __init__(self, id, name, residents): 
+  
+   def __init__(self, id, name): 
     self.id = id
     self.name = name
-    self.residents = residents
-   
 
-   ruta = "C:\\Users\\gabyp\\Documents\\proyecto_algoritmos\\starwars\\planets.csv"
-
-   def planets_from_csv(ruta): 
+def planets_from_csv(): 
+    path_planets= 'CSV/planets.csv'      #Almacena la información del CSV de planeta
+    rows = getRowsFromCsv(path_planets)
     
     planets = []
-    with open(ruta, mode='r', encoding='utf-8') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            planet = Planet(
+    for _ , row in rows:
+        planet = Planet(
                 row['id'],
-                row['name'],
-                row['residents'],  
+                row['name'],  
             )
-            planets.append(planet)
+        planets.append(planet)
     return planets
-   
-   def select_planet(planets):
-    try:
-        opcion = int(input("Seleccione un planeta: "))
-        eleccion_planeta = planets[opcion - 1]
-        print(f'Has seleccionado el planeta {eleccion_planeta.name}.')
-        return eleccion_planeta
-    except:
-        print("Caracter inválido. Inténtalo nuevamente.")
 
-    def show_planets (planets): 
-       for i, planet in enumerate (planets,1):
-          print("Seleccione un planeta")
-          print(f'{i}.{planets.name}')
-    
+planets = planets_from_csv()
 
 
 

@@ -1,5 +1,7 @@
 from App import App
 def main():
     app = App()
-    app.star()
+    app.start()
 main()
+
+#Inicia el programa

@@ -16,3 +16,4 @@ class Species:
       for name in episodeNames:
         print(name)
 
+#Muestra detalles de la especie 
