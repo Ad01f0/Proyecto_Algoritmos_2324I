@@ -17,3 +17,5 @@ def show_species_list(dbspecies, dbplanets, dbfilms, dbcharacters):
                     episodeNames.append(episode.title)
         specie.show(characterNames,planetName, episodeNames)
         print('-----------------')
+
+# Muestra una lista de especies junto con el nombre de su planeta de origen, los personajes de esa especie y los episodios en los que aparece la especie.

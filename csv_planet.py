@@ -1,6 +1,6 @@
 import pandas as pd
 
-def getRowsFromCsv(file_path):
+def getRowsFromCsv(file_path):  #Carga información del CSV de planeta
     df = pd.read_csv(file_path)
     return df.iterrows()
 class Planet:
@@ -10,7 +10,7 @@ class Planet:
     self.name = name
 
 def planets_from_csv(): 
-    path_planets= 'CSV/planets.csv'
+    path_planets= 'CSV/planets.csv'      #Almacena la información del CSV de planeta
     rows = getRowsFromCsv(path_planets)
     
     planets = []

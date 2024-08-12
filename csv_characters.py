@@ -1,6 +1,6 @@
 import pandas as pd
 
-def getRowsFromCsv(file_path):
+def getRowsFromCsv(file_path): #Carga información del CSV de personaje
     df = pd.read_csv(file_path)
     return df.iterrows()
 
@@ -38,7 +38,7 @@ class Characters:
 
 def characters_from_csv(): 
     path_characters = 'CSV/characters.csv'
-    rows = getRowsFromCsv(path_characters)
+    rows = getRowsFromCsv(path_characters)  #Almacena la información del CSV de personaje
     
     characters = []
     for _ , row in rows:

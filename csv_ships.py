@@ -1,11 +1,11 @@
 import pandas as pd
 
-def getRowsFromCsv(file_path):
+def getRowsFromCsv(file_path):   #Carga información del CSV de naves
     df = pd.read_csv(file_path)
     return df.iterrows()
 
 # Clase de importar naves
-class Starships:
+class Starships:    
     def __init__(self, id, name,model, manufacturer, cost_in_credits, length, max_atmosphering_speed, crew, passengers, cargo_capacity,consumables, hyperdrive_rating, MGLT, starship_class, pilots, films):
         self.id=id 
         self.name=name
@@ -42,7 +42,7 @@ class Starships:
                 f'Peliculas donde aparece: {self.films}\n')
         
 
-def starships_from_csv(): 
+def starships_from_csv():        #Almacena la información del CSV de naves
     path_starships= 'CSV/starships.csv'
     rows = getRowsFromCsv(path_starships)
     
@@ -69,7 +69,7 @@ def starships_from_csv():
         starships.append(starship)
 
     return starships
-starchips = starships_from_csv()
+starships = starships_from_csv()
 
 
 

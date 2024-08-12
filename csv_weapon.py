@@ -1,6 +1,6 @@
 import pandas as pd
 
-def getRowsFromCsv(file_path):
+def getRowsFromCsv(file_path):   #Carga información del CSV de armas
     df = pd.read_csv(file_path)
     return df.iterrows()
 
@@ -26,7 +26,7 @@ class Weapon:
                 f'Descripcion: {self.description}\n'
                 f'Peliculas donde aparece: {self.films}\n')
 
-def weapons_from_csv(): 
+def weapons_from_csv():    #Almacena la información del CSV de arma
     path_weapons= 'CSV/weapons.csv'
     rows = getRowsFromCsv(path_weapons)
     

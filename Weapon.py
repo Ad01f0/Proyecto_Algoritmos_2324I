@@ -1,3 +1,4 @@
+#Función arma
 class Weapon:
     def __init__(self, id, name):
         self.id = id

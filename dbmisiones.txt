@@ -10,3 +10,15 @@ Nave: Venator-class Star Destroyer
 Armas: Whipcord Thrower
 Integrantes: Admiral Ackbar
 
+Nombre de la mision: juandi
+Planeta destino: Tatooine
+Nave: Millennium Falcon
+Armas: Lightsaber
+Integrantes: Luke Skywalker
+
+Nombre de la mision: troka
+Planeta destino: Alderaan
+Nave: X-wing
+Armas: DL-44 Blaster Pistol
+Integrantes: Leia Organa
+

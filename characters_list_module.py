@@ -6,3 +6,5 @@ def buscar_personaje(dbcharacters):
     
         for character in personajes_filtrados:
             character.show()
+
+#Función que busca y muestra personajes cuyo nombre coincide con el string que ingresa el usuario.

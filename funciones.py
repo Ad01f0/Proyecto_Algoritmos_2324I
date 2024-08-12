@@ -11,8 +11,8 @@ from Asignar_vehiculos import asignar_vehiculos
 from Asignar_films import asignar_films
 from Asingar_planeta import asignar_planeta
 
-def cargar_SWAPIs(link):
-    try: 
+def cargar_SWAPIs(link): #Carga los datos desde el enlace de la API y devuelve la información en formato JSON
+    try:  
         informacion = rq.get(link).json()
         return informacion
     except: 
@@ -38,7 +38,7 @@ def cargar_info():
         title=general_films['properties']['title']
         episode_id=general_films['properties']['episode_id']
         release_date=general_films['properties']['release_date']
-        opening_crawl=general_films['properties']['opening_crawl']
+        opening_crawl=general_films['properties']['opening_crawl']      
         director=general_films['properties']['director']
         species=general_films['properties']['species']
         characters=general_films['properties']['characters']

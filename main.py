@@ -3,3 +3,5 @@ def main():
     app = App()
     app.start()
 main()
+
+#Inicia el programa

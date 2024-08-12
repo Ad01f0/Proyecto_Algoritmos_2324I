@@ -1,6 +1,6 @@
 from csv_planet import planets
 from csv_characters import characters
-from csv_ships import starchips
+from csv_ships import starships
 from csv_weapon import weapons
 class Mision:
     def __init__(self, nombre, planeta, nave, armas, integrantes):
@@ -229,10 +229,10 @@ def modificar_planeta(planeta_seleccionado):
 def seleccionar_nave():
     while(True):
         print("Naves disponibles para la misión:")
-        for starship in starchips:
+        for starship in starships:
             print(f"{starship.id}.- {starship.name}")
         nave = int(input("Ingrese la nave a utilizar: "))
-        for starship in starchips:
+        for starship in starships:
             if nave == starship.id:
                 return starship.name
         if nave > 60:
@@ -242,10 +242,10 @@ def seleccionar_nave():
 def modificar_nave(nave_seleccionada):
     while(True):
         print("Naves disponibles para la misión:")
-        for starship in starchips:
+        for starship in starships:
             print(f"{starship.id}.- {starship.name}")
         new_starship = int(input("Ingrese la nueva nave: "))
-        for starship in starchips:
+        for starship in starships:
             if new_starship == starship.id:
                 if starship.name == nave_seleccionada:
                     print('\nNo puedes seleccionar la misma nave.\n')
@@ -324,7 +324,7 @@ def visualizar_mision(misiones):
             armas_info = []
             integrantes_info = []
 
-            for starship in starchips:
+            for starship in starships:
                 if nave == starship.name:
                     nave = starship
             for arma in armas:
@@ -401,6 +401,3 @@ def misiones():
             break
         else:
             print("Opción no válida. Intente de nuevo.")
-
-    # Ejecuta el sistema
-    misiones()
