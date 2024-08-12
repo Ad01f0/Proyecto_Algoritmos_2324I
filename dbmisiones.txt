@@ -1,24 +1,12 @@
-Nombre de la misi�n: Berenice blanco
-Planeta destino: casa
-Nave: carro
-Armas: 1, 2, 3
-Integrantes: 1, 2, 3
+Nombre de la mision: Culito
+Planeta destino: Tatooine
+Nave: Millennium Falcon
+Armas: Lightsaber
+Integrantes: Luke Skywalker, Darth Vader
 
-Nombre de la misi�n: adolfo martinez
-Planeta destino: san juan
-Nave: carro
-Armas: 1
-Integrantes: 1
-
-Nombre de la misi�n: mario blanco
-Planeta destino: caricuao
-Nave: carro
-Armas: 1
-Integrantes: 1
-
-Nombre de la misi�n: Anny hernandez
-Planeta destino: caricuao
-Nave: carro
-Armas: 1
-Integrantes: 1
+Nombre de la mision: Berenice
+Planeta destino: Corellia
+Nave: Venator-class Star Destroyer
+Armas: Whipcord Thrower
+Integrantes: Admiral Ackbar
 
