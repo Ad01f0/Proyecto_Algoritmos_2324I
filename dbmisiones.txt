@@ -1,0 +1,12 @@
+Nombre de la mision: Culito
+Planeta destino: Tatooine
+Nave: Millennium Falcon
+Armas: Lightsaber
+Integrantes: Luke Skywalker, Darth Vader
+
+Nombre de la mision: Berenice
+Planeta destino: Corellia
+Nave: Venator-class Star Destroyer
+Armas: Whipcord Thrower
+Integrantes: Admiral Ackbar
+

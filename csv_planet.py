@@ -19,11 +19,10 @@ def planets_from_csv():
                 row['id'],
                 row['name'],  
             )
-        planets.append(planet)   
+        planets.append(planet)
+    return planets
 
-planets_from_csv()
-
-
+planets = planets_from_csv()
 
 
 

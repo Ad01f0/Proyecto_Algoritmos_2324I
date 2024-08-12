@@ -3,7 +3,7 @@ from movies_list_module import show_movie_list
 from planets_list_module import show_planets_list
 from species_list_module import show_species_list
 from characters_list_module import buscar_personaje
-
+from Mision import misiones
 class App:
         def __init__(self) -> None:
                  self.dbfilms, self.dbplanets, self.dbcharacters, self.dbstarships, self.dbvehicles, self.dbspecies = cargar_info()
@@ -42,6 +42,6 @@ class App:
                         elif menu == '7':
                                 None
                         elif menu == '8':
-                                None       
+                                misiones()
                         elif menu == '9':
                                 break               
