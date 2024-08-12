@@ -8,7 +8,7 @@ def show_planets_list(dbplanets, dbfilms, dbcharacters):
                 if planet.url == url:
                     filmNames.append(film.title)
         for character in dbcharacters:
-                if character.homeworld == planet.url:
-                    homeworldCharacters.append(character.name)
-        planet.show(filmNames,homeworldCharacters)
+            if planet.name == character.homeworld:
+                homeworldCharacters.append(character.name)
+        planet.show(filmNames, homeworldCharacters)
         print('-----------------')
